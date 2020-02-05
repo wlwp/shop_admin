@@ -37,6 +37,10 @@ export default {
       }
     }
   },
+  created () {
+    // 先删除token值
+    localStorage.removeItem('token')
+  },
   methods: {
     login () {
       this.$refs.loginForm.validate(async valid => {
