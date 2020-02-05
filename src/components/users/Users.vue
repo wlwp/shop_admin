@@ -153,7 +153,8 @@ export default {
       },
       assignRolesForm: {
         username: '',
-        region: ''
+        region: '',
+        id: -1
       },
       rolesList: [],
       addUsersRules: {
@@ -343,6 +344,7 @@ export default {
     // 显示分配角色对话框
     async showAssignRolesDialog (row) {
       console.log(row)
+      this.assignRolesForm.id = row.id
 
       this.assignRolesForm.username = row.username
 
@@ -353,13 +355,29 @@ export default {
       // 根据用户id查询角色id
       let r = await this.$axios.get('users/' + row.id)
       console.log(r)
-      // this.
-
+      this.assignRolesForm.region =
+        r.data.data.rid === -1 ? '' : r.data.data.rid
       this.dialogAssignRolesFormVisible = true
     },
     // 角色授权
     async assignRoles () {
-      // let res = await this.$axios.post(`roles/:roleId/rights`)
+      const { id, region } = this.assignRolesForm
+      let res = await this.$axios.put(`users/${id}/role`, {
+        rid: region
+      })
+      console.log(res)
+      if (res.data.meta.status === 200) {
+        // 1. 提示信息
+        this.$message({
+          type: 'success',
+          message: res.data.meta.msg,
+          duration: 1000
+        })
+        // 2. 关闭对话框
+        this.dialogAssignRolesFormVisible = false
+        // 3. 刷新页面
+        this.loadUsersList(this.currentPage)
+      }
     }
   }
 }
