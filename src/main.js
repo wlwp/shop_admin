@@ -8,6 +8,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/common.css'
 // 使用API时必须在请求头中使用 Authorization 字段提供 token 令牌
 import axios from 'axios'
+// common
+// var ElTreeGridElTreeGrid from '' = require('element-tree-grid')
+import ElTreeGrid from 'element-tree-grid'
+Vue.component(ElTreeGrid.name, ElTreeGrid)
 // 处理axios的三个问题
 // 处理一:基路径
 axios.defaults.baseURL = 'http://localhost:8888/api/private/v1/'

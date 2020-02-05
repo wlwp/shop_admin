@@ -104,7 +104,7 @@
       </div>
     </el-dialog>
     <!-- 分配角色对话框 -->
-    <el-dialog title="角色授权" :visible.sync="dialogAssignRolesFormVisible">
+    <el-dialog title="分配角色" :visible.sync="dialogAssignRolesFormVisible">
       <el-form :model="assignRolesForm">
         <el-form-item label="用户名" :label-width="formLabelWidth">
           <el-tag>{{ assignRolesForm.username }}</el-tag>
