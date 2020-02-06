@@ -21,8 +21,8 @@ const router = new VueRouter({
         { path: '/users/:page?', component: Users },
         { path: '/roles', component: Roles },
         { path: '/rights', component: Rights },
-        { path: '/goods', component: Goods },
-        { path: '/categories', component: Categories },
+        { path: '/goods/:page?', component: Goods },
+        { path: '/categories/:page?', component: Categories },
         { path: '/add_goods', component: addGoods }
       ]
     }

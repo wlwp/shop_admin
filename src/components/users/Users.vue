@@ -208,6 +208,13 @@ export default {
     // console.log(curPage)
     this.loadUsersList(curPage)
   },
+  watch: {
+    $route (to, from) {
+      console.log(to.params.page)
+      let page = to.params.page
+      this.loadUsersList(page)
+    }
+  },
   methods: {
     // 加载用户数据列表
     async loadUsersList (pagenum = 1, pagesize = 2, query = '') {

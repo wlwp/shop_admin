@@ -56,11 +56,20 @@ export default {
     }
   },
   created () {
-    this.loadGoodsList()
+    // console.log(this.$route.params.page)
+
+    let page = this.$route.params.page
+    this.loadGoodsList(page)
   },
   filters: {
     dateFilter (res) {
       return moment(res).format('YYYY-MM-DD hh:mm:ss')
+    }
+  },
+  watch: {
+    $route (to, from) {
+      let page = to.params.page
+      this.loadGoodsList(page)
     }
   },
   methods: {
@@ -87,6 +96,7 @@ export default {
     // 切换页码
     changePage (page) {
       console.log(page)
+      this.$router.push('/goods/' + page)
       this.currentPage = page
       this.loadGoodsList(this.currentPage, 10, this.searchText)
     },

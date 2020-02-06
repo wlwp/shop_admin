@@ -117,7 +117,14 @@ export default {
     }
   },
   created () {
-    this.loadCatList()
+    let page = this.$route.params.page
+    this.loadCatList(page)
+  },
+  watch: {
+    $route (to, from) {
+      let page = to.params.page
+      this.loadCatList(page)
+    }
   },
   methods: {
     // 加载商品分类列表
@@ -136,6 +143,7 @@ export default {
     },
     // 切换分页
     changePage (page) {
+      this.$router.push('/categories/' + page)
       this.currentPage = page
       this.loadCatList(this.currentPage)
     },
