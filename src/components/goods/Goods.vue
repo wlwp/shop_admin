@@ -13,7 +13,7 @@
         </el-input>
       </el-col>
       <el-col :span="4">
-        <el-button type="success">添加商品</el-button>
+        <el-button type="success" @click="addGoods">添加商品</el-button>
       </el-col>
     </el-row>
     <el-table :data="goodsList" style="width: 100%">
@@ -93,10 +93,14 @@ export default {
     // 搜索商品
     searchGoods () {
       this.loadGoodsList(1, 10, this.searchText)
+    },
+    // 添加商品
+    addGoods () {
+      this.$router.push('add_goods')
     }
   }
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 </style>
