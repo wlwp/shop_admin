@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router/router.js'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/common.css'
 // 使用API时必须在请求头中使用 Authorization 字段提供 token 令牌
 import axios from 'axios'
